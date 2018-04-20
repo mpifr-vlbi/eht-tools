@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 
+###########################################################################
+#    Copyright (C) 2018  Helge Rottmann
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>
+###########################################################################
+
 from mark6control import Mark6, Mark6Exception, Mark6Scan
 from Tkinter import *
 import tkMessageBox
@@ -205,7 +222,7 @@ def getScanList(args, mark6):
 				scanInfo['status'] = "recording"
 			else:
 				# scan should be recording but is not
-				tkMessageBox.showerror("Error", "scan %s is not recording on recorder %s" % (scanName, args.recorder))
+				tkMessageBox.showerror("Error", "scan %s is not recording on %s" % (scanName, args.recorder))
 
 			scans.append(scanInfo)
 			return scans, 0
