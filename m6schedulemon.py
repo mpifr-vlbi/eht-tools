@@ -310,7 +310,7 @@ class GUI(Frame):
 
 				recState = self.mark6.getRecordingState()
 				if recState['state'] == "recording":
-					scan['status'] = state
+					scan['status'] = recState['state']
 				else: # scan should be recording but is not
 					# only show error once
 					if scan['status'] != "Error":
