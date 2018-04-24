@@ -175,7 +175,7 @@ class GUI(Frame):
 		# check if all modules are activated and the number of discovered disks is 8
 		for i in range(4):
 			error = 0
-			capacityStr = "Slot {:d} capacity [TB] (free/total): {:.1f} / {:.1f}"
+			capacityStr = "Slot {:d} capacity [TB] (total/free): {:.1f} / {:.1f}"
 
 			if self.mark6.slots[i].vsn == "unknown":
 				self.mk6Slot[i]["text"] = "inactive"
