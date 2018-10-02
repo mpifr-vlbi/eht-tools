@@ -94,7 +94,7 @@ class GUI(Frame):
 		mk6Frame.grid(row=0,column=1, rowspan=2, sticky="news")
 		
 		for i in range(4):
-			self.mk6Slot.append(  Button(mk6Frame, text="Slot", wraplength=60, bg="lawn green", width=7, height=4,disabledforeground="black",state=DISABLED))
+			self.mk6Slot.append(  Button(mk6Frame, text="Slot", wraplength=70, bg="lawn green", width=7, height=4,disabledforeground="black",state=DISABLED))
 			self.mk6Capacity.append ( Label(mk6Frame, font=('Courier', 8)))
 
 		self.mk6Slot[0].grid(row=0,column=0, rowspan=2)
@@ -179,7 +179,7 @@ class GUI(Frame):
 
 			if self.mark6.slots[i].vsn == "unknown":
 				self.mk6Slot[i]["text"] = "inactive"
-				capacityStr = capacityStr.format(i, 0, 0)
+				capacityStr = capacityStr.format(i+1, 0, 0)
 				error += 1
 			
 				if str(i+1) in streamSlots:
@@ -193,7 +193,7 @@ class GUI(Frame):
 				groupSlots += list(map(int, self.mark6.slots[i].group))
 
                                 self.mk6Slot[i]["text"] = "{}\n{:.1f}%".format(self.mark6.slots[i].vsn,  self.mark6.slots[i].freePercentage)
-				capacityStr = capacityStr.format(i, self.mark6.slots[i].groupCapacityGB/1000, self.mark6.slots[i].capacityRemainingGB/1000)
+				capacityStr = capacityStr.format(i+1, self.mark6.slots[i].groupCapacityGB/1000, self.mark6.slots[i].capacityRemainingGB/1000)
 
 			self.mk6Capacity[i]["text"] = capacityStr
 			# change color to red in case of error
