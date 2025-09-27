@@ -312,8 +312,20 @@ class GUI(Frame):
                                 if recState['state'] == "recording":
                                         scan['status'] = recState['state']
                                 else: # scan should be recording but is not
+                                        
+                                        # mk6 software sometimes reports the wrong state so retry a few times
+                                        retry = 0
+                                        while retry < 5:
+                                            print ("Retrying scan state")
+                                            sleep(1)
+                                            recState = self.mark6.getRecordingState()
+                                            if recState['state'] == "recording":
+                                                scan['status'] = recState['state']
+                                                break
+                                            retry += 1
+
                                         # only show error once
-                                        if scan['status'] != "Error":
+                                        if retry == 5 and scan['status'] != "Error":
                                                 tkinter.messagebox.showerror("Error", "scan %s is not recording on %s" % (scan['name'], self.args.recorder))
                                                 scan['status'] = "Error"
                                 next = idx
